@@ -12,7 +12,7 @@ const App: () => React$Node = () => {
       <PersistGate loading={null} persistor={persistor}>
         <StatusBar barStyle="dark-content" />
         <SafeAreaView>
-          <Text>Hello world</Text>
+          <Text style={{fontFamily: 'montserrat'}}>Hello world</Text>
         </SafeAreaView>
       </PersistGate>
     </ReduxProvider>
