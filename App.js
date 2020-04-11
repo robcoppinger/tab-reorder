@@ -1,19 +1,20 @@
 import React from 'react';
-import {SafeAreaView, StyleSheet, Text, StatusBar} from 'react-native';
 import {Provider as ReduxProvider} from 'react-redux';
+import {NavigationContainer} from '@react-navigation/native';
 import {PersistGate} from 'redux-persist/integration/react';
 import {configureStore} from './src/redux/store';
+import {AppNavigator} from './src/stack/AppNavigator';
+import {navigationRef} from './src/services/Navigation';
 
 const {persistor, store} = configureStore();
 
-const App: () => React$Node = () => {
+const App = () => {
   return (
     <ReduxProvider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <StatusBar barStyle="dark-content" />
-        <SafeAreaView>
-          <Text style={{fontFamily: 'montserrat'}}>Hello world</Text>
-        </SafeAreaView>
+        <NavigationContainer ref={navigationRef}>
+          <AppNavigator />
+        </NavigationContainer>
       </PersistGate>
     </ReduxProvider>
   );
